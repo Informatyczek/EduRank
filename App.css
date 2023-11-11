@@ -1,0 +1,89 @@
+/*
+kolory do uzycia na stronie
+.color1 {color: #060b10;}
+.color2 {color: #1f252d;}
+.color3 {color: #394950;}
+.color4 {color: #5a6c76;}
+.color5 {color: #7c9da6;}
+*/
+
+
+* {
+    padding: 0%; 
+
+}
+
+html {
+    height: 100%;
+}
+body {
+    background-color: #1f252d;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+
+#nav{
+    background-color: #1f252d;
+}
+
+#menu {
+    width: 60%;
+    height: 6%;
+    background-color: red;
+    float: left;
+    text-align: justify; /* Wyrównanie tekstu do lewej i prawej strony */
+}
+
+
+#menu p {
+    display: inline-block;
+    margin-right: 6%;
+    font-size: 1.2em;
+}
+
+
+#user {
+    align-items: flex-end;
+    width: 40%; /* Szerokość nowego kontenera */
+    height: 6%; /* Wysokość - pełna wysokość okna przeglądarki */
+    background-color: blue; /* Kolor tła */
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+}
+#main {
+    display: flex;
+    height: 86%;
+}
+#ranking{
+    width: 15%; /* Szerokość nowego kontenera */
+    height: 100%;
+    left: 2%;
+    top: 2%;
+    background-color: blue;
+    border: 1px solid white;
+}
+
+#task {
+    width: 55%;
+    height: 100%;
+    border: 1px solid white;
+}
+
+#control {
+    width: 30%;
+    padding-top: 4%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#control p{
+    border: 1px solid white;
+    margin-left: 15%;
+    max-width: 45%;
+    font-size: 1.5em;
+}
+
+

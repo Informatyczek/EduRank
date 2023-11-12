@@ -9,8 +9,8 @@ kolory do uzycia na stronie
 
 
 * {
-    padding: 0%; 
-
+    
+    padding: 0px; 
 }
 
 html {
@@ -25,6 +25,7 @@ body {
 
 #nav{
     background-color: #1f252d;
+    width: 100%;
 }
 
 #menu {
@@ -55,6 +56,7 @@ body {
 #main {
     display: flex;
     height: 86%;
+    width: 100%;
 }
 #ranking{
     width: 15%; /* Szerokość nowego kontenera */

@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="App.css">
 </head>
 <body>
+    <?php
+    session_start();
+
+    ?>
     <div id="nav">
         <div id ="menu">
             <p>Nowa gra</p>
@@ -17,7 +21,24 @@
         </div>
 
         <div id="user">
-            <h5> <a href="login.php">konto uzytokownika</a></h5>
+
+        
+            <ol>
+            <?php
+            if (isset($_SESSION['username'])) {
+                echo '<li><a href="profile.php">'.$_SESSION['username'].'</a>';
+                  echo "<ul>";
+                    echo '<li><a href="logout.php">Wyloguj</a></li>';
+
+                  echo "</ul></li></ol>";
+                
+                
+            } else {
+                echo '<h5> <a href="login.php">konto uzytokownika</a></h5>';
+            }
+            
+            
+            ?>
         </div>
         
         

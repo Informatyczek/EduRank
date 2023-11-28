@@ -12,27 +12,56 @@
         session_start();
 
         if (isset($_POST["login"]) && isset($_POST["password"]) && isset($_POST["confirm_password"]) && isset($_POST["mail"])) {
-            $conn = new mysqli('localhost', 'root', '', 'EduRank');
+            $conn = new mysqli('localhost', 'root', '', 'edurank');
 
             if ($conn->connect_errno) {
                 echo "Baza danych niedostępna";
                 exit();
             }
             $login = $_POST['login'];
-            $login = $_POST['password'];
-            $login = $_POST['confirm_password'];
-            $login = $_POST['mail'];
-        }
+            $pass = $_POST['password'];
+            $pass2 = $_POST['confirm_password'];
+            $mail = $_POST['mail'];
 
+
+            
+        if ($pass == $pass2) {
+            $pass = md5($pass);
+            $role = 'guest';
+            $query = "SELECT * FROM users WHERE username = '$login' AND password = '$pass'";
+            $result = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($result) == 0) {
+                
+                $query = "INSERT INTO users (id, username, mail, password, role) VALUES (NULL,?,?,?,?);";
+                $polecenie = $conn->prepare($query);
+                $polecenie->bind_param("ssss", $login, $mail, $pass, $role);
+                $polecenie->execute();
+                $polecenie->free_result();
+                header('Location: http://localhost/edurank/edurank/login.php/');
+                
+            } else {
+                echo 'Takie konto już istnieje! <br>';
+            }
+            
+        } else {
+            echo "Hasła nie są zgodne";
+        }
+        
+        $conn->close();
+    } 
     ?>
 
 
     <form method="POST">
-        Login: <input type="text" id="login" require>
-        Hasło: <input type="text" id="password" require>
-        Powtórz hasło: <input type="text" id="confirm_password" require>
-        E-mail: <input type="mail" id="mail" require>
+        Login: <input type="text" name="login" required>
+        Hasło: <input type="password" name="password" required>
+        Powtórz hasło: <input type="password" name="confirm_password" required>
+        E-mail: <input type="mail" name="mail" required>
         <input type="submit" value="Zarejestruj">
     </form>
+
+
+    
 </body>
 </html>
